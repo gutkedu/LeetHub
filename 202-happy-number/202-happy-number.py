@@ -1,22 +1,19 @@
 class Solution:
     def isHappy(self, n: int) -> bool:
-        hashmap = set()
+        visit = set()
         
-        while True:
+        while n not in visit:
+            visit.add(n)
+            n = self.sumOfSquares(n)
+            
             if n == 1:
                 return True
+        
+        return False
             
-            currentSum = 0
-            num = n
-            
-            while num:
-                currentSum += (num % 10) ** 2
-                num = num // 10
-                
-            if currentSum not in hashmap:
-                hashmap.add(currentSum)
-                n = currentSum
-            
-            else:
-                return False
+    def sumOfSquares(self,n:int)->int:
+        num_string, n_sum = str(n), 0
+        for s in num_string:
+            n_sum += pow(int(s),2)
+        return n_sum
         
