@@ -10,10 +10,12 @@ class Solution:
                 return True
         
         return False
-            
-    def sumOfSquares(self,n:int)->int:
-        num_string, n_sum = str(n), 0
-        for s in num_string:
-            n_sum += pow(int(s),2)
-        return n_sum
         
+    def sumOfSquares(self,n:int)->int:
+        output = 0
+        while n:
+            digit = n % 10
+            digit = digit ** 2
+            output += digit
+            n = n // 10
+        return output
